@@ -7,6 +7,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { AthleteModule } from './athlete/athlete.module';
 import { EventModule } from './event/event.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { ResultModule } from './result/result.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { PrismaModule } from './prisma/prisma.module';
     AthleteModule,
     EventModule,
     PrismaModule,
+    ResultModule,
   ],
   controllers: [AppController],
   providers: [],

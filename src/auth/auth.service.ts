@@ -51,6 +51,7 @@ export class AuthService {
     if (!pwMatches) throw new ForbiddenException('Credentials incorrect');
     // delete password
     delete athlete.password;
+    return athlete;
     //this.signToken(athlete.id, athlete.email);
   }
 

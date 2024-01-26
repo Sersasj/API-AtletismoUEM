@@ -8,19 +8,29 @@ datasource db {
 }
 
 model Athlete {
-  id             Int      @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  name           String
-  email          String   @unique
-  isAdmin        Boolean  @default(false)
-  password       String?  // Nullable because athletes might not have a password
-  resultsHistory Json?    // Nullable because athletes might not have results yet
-  events         Event[]  // Relation to Event model
+  name     String
+  email    String?   @unique
+  isAdmin  Boolean  @default(false)
+  password String?  // Nullable because athletes might not have a password
+  results  Result[] // Relation to Result model
+  events   Event[]  // Relation to Event model
 }
 
 model Event {
-  id       Int       @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
   name     String
   athletes Athlete[] // Relation to Athlete model
+  results  Result[]  // Relation to Result model
+}
+
+model Result {
+  id       Int      @id @default(autoincrement())
+  result   Float
+  athlete  Athlete  @relation(fields: [athleteId], references: [id])
+  athleteId Int
+  event    Event    @relation(fields: [eventId], references: [id])
+  eventId  Int
 }
