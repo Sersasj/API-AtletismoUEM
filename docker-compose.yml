@@ -1,13 +1,34 @@
 version: '3'
 
 services:
+  dev-db:
+    image: postgres:13
+    ports:
+      - '5434:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    networks:
+      - dev-network
+  test-db:
+    image: postgres:13
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    networks:
+      - dev-network
   api:
     build: .
     entrypoint: .docker/entrypoint.sh
     container_name: api
     ports:
-      - 3000:3000
-      - 5555:5555
+      - '3000:3000'
+      - '5555:5555'
     volumes:
       - .:/home/node/app
-
+networks:
+  dev-network:

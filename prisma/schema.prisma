@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Athlete {
+  id             Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name           String
+  email          String   @unique
+  isAdmin        Boolean  @default(false)
+  password       String?  // Nullable because athletes might not have a password
+  resultsHistory Json?    // Nullable because athletes might not have results yet
+  events         Event[]  // Relation to Event model
+}
+
+model Event {
+  id       Int       @id @default(autoincrement())
+  name     String
+  athletes Athlete[] // Relation to Athlete model
+}

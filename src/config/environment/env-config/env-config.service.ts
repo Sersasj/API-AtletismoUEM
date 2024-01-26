@@ -11,4 +11,10 @@ export class EnvConfigService implements IEnvironmentVariables {
   getPort(): string {
     return this.configService.get<string>('PORT');
   }
+  getJwtSecret(): string {
+    return this.configService.get<string>('JWT_SECRET');
+  }
+  getDatabaseUrl(): string {
+    return this.configService.get<string>('DATABASE_URL');
+  }
 }

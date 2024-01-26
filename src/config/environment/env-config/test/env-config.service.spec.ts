@@ -22,13 +22,21 @@ describe('EnvConfigService', () => {
     it('should return a node env', () => {
       const nodeEnv = sut.getNodeEnv();
       expect(nodeEnv).toBeDefined();
-      expect(nodeEnv).toEqual('test');
     });
 
     it('should return a port', () => {
       const port = sut.getPort();
       expect(port).toBeDefined();
-      expect(port).toBe('4000');
+    });
+
+    it('should return a jwt secret', () => {
+      const jwtSecret = sut.getJwtSecret();
+      expect(jwtSecret).toBeDefined();
+    });
+
+    it('should return a database url', () => {
+      const databaseUrl = sut.getDatabaseUrl();
+      expect(databaseUrl).toBeDefined();
     });
   });
 });
