@@ -1,6 +1,6 @@
-# Track and Field University Backend
+# API AtletismoUEM
 
-This repository contains the backend code for the upcoming Track and Field group of the State University of Maringá website. It's built with NestJS, utilizes Prisma as an ORM, and PostgreSQL for data storage.
+This repository contains the backend code for the upcoming Track and Field website of the State University of Maringá. It's built with NestJS, utilizes Prisma as an ORM, and PostgreSQL for data storage.
 
 ## Features
 
@@ -16,8 +16,9 @@ This repository contains the backend code for the upcoming Track and Field group
 
 ## Database Schema
 
-The application uses four main tables: `Athlete`, `Event`, `Result`, `AthleteToEvent`. The relationships between these tables are depicted in the schema diagram included in this repository.
-![Alt text](r/home/sersasj/AtletismoUEM/API-AtletismoUEM/entities.png 'Title')
+The application uses four main tables: `Athlete`, `Event`, `Result`, `AthleteToEvent`. The relationships between these tables are depicted in the schema diagram below.
+![Captura de tela 2024-01-26 172341](https://github.com/Sersasj/API-AtletismoUEM/assets/32242350/9cd8ba6c-30ba-4e93-ae8e-ef2573f15f30)
+
 
 ## Getting Started
 
