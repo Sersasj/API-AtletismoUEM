@@ -1,70 +1,8 @@
 /* eslint-disable */
 export default async () => {
-  const t = {};
-  return {
-    '@nestjs/swagger': {
-      models: [
-        [
-          import('./auth/dto/auth.dto'),
-          {
-            AuthDto: {
-              email: { required: true, type: () => String },
-              password: { required: true, type: () => String },
-              name: { required: true, type: () => String },
-            },
-          },
-        ],
-        [import('./athlete/dto/create-athlete.dto'), { CreateAthleteDto: {} }],
-        [import('./athlete/dto/update-athlete.dto'), { UpdateAthleteDto: {} }],
-        [import('./event/dto/create-event.dto'), { CreateEventDto: {} }],
-        [import('./event/dto/update-event.dto'), { UpdateEventDto: {} }],
-        [import('./athlete/entities/athlete.entity'), { Athlete: {} }],
-        [import('./event/entities/event.entity'), { Event: {} }],
-        [
-          import('./auth/dto/auth-create.dto'),
-          {
-            AuthCreateDto: {
-              email: { required: true, type: () => String },
-              password: { required: true, type: () => String },
-              name: { required: true, type: () => String },
-            },
-          },
-        ],
-      ],
-      controllers: [
-        [
-          import('./app.controller'),
-          { AppController: { getHello: { type: Object } } },
-        ],
-        [
-          import('./auth/auth.controller'),
-          { AuthController: { login: {}, signin: {} } },
-        ],
-        [
-          import('./athlete/athlete.controller'),
-          {
-            AthleteController: {
-              create: { type: String },
-              findAll: { type: String },
-              findOne: { type: String },
-              update: { type: String },
-              remove: { type: String },
-            },
-          },
-        ],
-        [
-          import('./event/event.controller'),
-          {
-            EventController: {
-              create: { type: String },
-              findAll: { type: String },
-              findOne: { type: String },
-              update: { type: String },
-              remove: { type: String },
-            },
-          },
-        ],
-      ],
-    },
-  };
+    const t = {
+        ["./athlete/entities/athlete.entity"]: await import("./athlete/entities/athlete.entity"),
+        ["./event/entities/event.entity"]: await import("./event/entities/event.entity")
+    };
+    return { "@nestjs/swagger": { "models": [[import("./auth/dto/auth.dto"), { "AuthDto": { email: { required: true, type: () => String }, password: { required: true, type: () => String } } }], [import("./auth/dto/auth-create.dto"), { "AuthCreateDto": { email: { required: true, type: () => String }, password: { required: true, type: () => String }, name: { required: true, type: () => String } } }], [import("./athlete/dto/create-athlete.dto"), { "CreateAthleteDto": { name: { required: true, type: () => String }, email: { required: true, type: () => String }, isAdmin: { required: true, type: () => Boolean }, password: { required: false, type: () => String }, resultsHistory: { required: false, type: () => Object } } }], [import("./athlete/dto/update-athlete.dto"), { "UpdateAthleteDto": {} }], [import("./event/dto/create-event.dto"), { "CreateEventDto": {} }], [import("./event/dto/update-event.dto"), { "UpdateEventDto": {} }], [import("./result/dto/create-result.dto"), { "CreateResultDto": {} }], [import("./result/dto/update-result.dto"), { "UpdateResultDto": {} }], [import("./event/entities/event.entity"), { "Event": { id: { required: true, type: () => Number }, name: { required: true, type: () => String }, athletes: { required: true, type: () => [t["./athlete/entities/athlete.entity"].Athlete] }, results: { required: true, type: () => [Object] } } }], [import("./athlete/entities/athlete.entity"), { "Athlete": { id: { required: true, type: () => Number }, createdAt: { required: true, type: () => Date }, updatedAt: { required: true, type: () => Date }, name: { required: true, type: () => String }, email: { required: true, type: () => String }, isAdmin: { required: true, type: () => Boolean }, password: { required: true, type: () => String }, results: { required: true, type: () => [Object] }, events: { required: true, type: () => [t["./event/entities/event.entity"].Event] } } }], [import("./result/entities/result.entity"), { "Result": { id: { required: true, type: () => Number }, result: { required: true, type: () => Number }, athleteId: { required: true, type: () => Number }, eventId: { required: true, type: () => Number } } }]], "controllers": [[import("./app.controller"), { "AppController": { "getHello": { type: Object } } }], [import("./auth/auth.controller"), { "AuthController": { "login": {}, "signin": {} } }], [import("./athlete/athlete.controller"), { "AthleteController": { "create": {}, "findAll": {}, "findOne": {}, "update": {}, "remove": {} } }], [import("./event/event.controller"), { "EventController": { "create": { type: String }, "findAll": { type: String }, "findOne": { type: String }, "update": { type: String }, "remove": { type: String } } }], [import("./result/result.controller"), { "ResultController": { "create": { type: String }, "findAll": { type: String }, "findOne": { type: String }, "update": { type: String }, "remove": { type: String } } }]] } };
 };

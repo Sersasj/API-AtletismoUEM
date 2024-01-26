@@ -14,7 +14,7 @@ model Athlete {
   name     String
   email    String?   @unique
   isAdmin  Boolean  @default(false)
-  password String?  // Nullable because athletes might not have a password
+  password String?  
   results  Result[] // Relation to Result model
   events   Event[]  // Relation to Event model
 }
