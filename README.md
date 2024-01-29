@@ -46,6 +46,8 @@ Ensure you have Node.js installed on your machine. If not download it [here](htt
    ```
 
 4. Start the development server:
+
    ```sh
+   db:dev:restart
    npm run start:dev
    ```

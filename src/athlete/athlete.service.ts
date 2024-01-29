@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateAthleteDto } from './dto/create-athlete.dto';
 import { UpdateAthleteDto } from './dto/update-athlete.dto';
 import { PrismaService } from '@/prisma/prisma.service';
+import { Event } from '@/event/entities/event.entity';
 
 @Injectable()
 export class AthleteService {
@@ -14,7 +15,6 @@ export class AthleteService {
         name: createAthleteDto.name,
         isAdmin: createAthleteDto.isAdmin,
         password: createAthleteDto.password,
-        resultsHistory: createAthleteDto.resultsHistory,
       },
     });
     return athlete;
@@ -45,7 +45,9 @@ export class AthleteService {
         name: updateAthleteDto.name,
         isAdmin: updateAthleteDto.isAdmin,
         password: updateAthleteDto.password,
-        resultsHistory: updateAthleteDto.resultsHistory,
+        events: {
+          connect: updateAthleteDto.events.map((event) => ({ id: event.id })),
+        },
       },
     });
 

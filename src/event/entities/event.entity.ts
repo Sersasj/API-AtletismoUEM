@@ -10,6 +10,6 @@ import { Result } from 'src/result/entities/result.entity';
 export class Event {
   id: number;
   name: string;
-  athletes: Athlete[];
-  results: Result[];
+  //athletes: Athlete[];
+  //results: Result[];
 }

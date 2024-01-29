@@ -22,7 +22,11 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "npx dotenv-cli -e .env.test -- jest --runInBand --config ./jest.e2e.config.ts",
     "prepare": "husky install",
-    "migrate:postgres": "dotenv -e .env.test -- npx prisma migrate dev"
+    "migrate:postgres": "dotenv -e .env.test -- npx prisma migrate dev",
+    "prisma:dev:deploy": "prisma migrate deploy",
+    "db:dev:up": "docker compose up dev-db -d",
+    "db:dev:rm": "docker compose rm dev-db -s -f -v",
+    "db:dev:restart": "npm run db:dev:rm && npm run db:dev:up && timeout 1 && npm run prisma:dev:deploy"
   },
   "dependencies": {
     "@commitlint/config-conventional": "^17.3.0",

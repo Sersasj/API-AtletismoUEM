@@ -1,5 +1,6 @@
 // create-athlete.dto.ts
 import { IsString, IsNotEmpty, IsBoolean, IsOptional } from 'class-validator';
+import { Event } from '@/event/entities/event.entity';
 
 export class CreateAthleteDto {
   @IsNotEmpty()
@@ -19,5 +20,5 @@ export class CreateAthleteDto {
   password?: string;
 
   @IsOptional()
-  resultsHistory?: any;
+  events?: Event[];
 }
